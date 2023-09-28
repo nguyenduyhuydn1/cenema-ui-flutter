@@ -163,18 +163,18 @@ class _SlideState extends State<_Slide> {
               // itemCount: movies.length,
               itemBuilder: (context, index) {
                 final movie = movies[index % movies.length];
-
-                  // double scale = max(viewPortFraction,
+              // double scale = max(viewPortFraction,
               //     (1 - (percent - index).abs() + viewPortFraction));
+
               // double angle = 0;
               // if (pageController.position.haveDimensions) {
               //   angle = index.toDouble() - percent;
               // } else {
               //   if (index == 0 || index == 2) {
-              //     scale = 0.65;
+              //     scale = viewPortFraction;
               //   }
               //   if (index == 1) {
-              //     scale = 1.65;
+              //     scale = viewPortFraction + 1;
               //   }
 
               //   angle = index.toDouble() - 1;
