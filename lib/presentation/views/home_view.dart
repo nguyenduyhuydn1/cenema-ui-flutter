@@ -164,6 +164,23 @@ class _SlideState extends State<_Slide> {
               itemBuilder: (context, index) {
                 final movie = movies[index % movies.length];
 
+
+              // double scale = max(viewPortFraction,
+              //     (1 - (percent - index).abs() + viewPortFraction));
+
+              // double angle = 0;
+              // if (pageController.position.haveDimensions) {
+              //   angle = index.toDouble() - percent;
+              //   // angle = (angle * 5).clamp(-5, 5);
+              // } else {
+              //   angle = index.toDouble() - 1;
+              //   // angle = (angle * 5).clamp(-5, 5);
+              // }
+              // const padding = 300;
+              // final pt = padding - (scale / (1 + viewPortFraction) * padding);
+
+
+                
                 double scale = max(viewPortFraction,
                     (1 - (pageOffset! - index).abs() + viewPortFraction));
                 double angle = 0;
@@ -175,6 +192,9 @@ class _SlideState extends State<_Slide> {
                   angle = (angle * 5).clamp(-5, 5);
                 }
 
+              const padding = 300;
+              final pt = padding - (scale / (1 + viewPortFraction) * padding);
+
                 return GestureDetector(
                   onTap: () {
                     Navigator.push(
@@ -185,8 +205,7 @@ class _SlideState extends State<_Slide> {
                     );
                   },
                   child: Padding(
-                    padding: EdgeInsets.only(
-                        top: 100 - (scale / (1 + viewPortFraction) * 100)),
+                    padding: EdgeInsets.only(top: pt),
                     child: Stack(
                         alignment: AlignmentDirectional.topCenter,
                         children: [
